@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Bootstrap 5 Card Component</title>
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <style>
+        /* Modern professional styling */
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        /* Professional card container */
+        .card-wrapper {
+            width: 100%;
+            max-width: 350px;
+            position: relative;
+        }
+        
+        .custom-card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08), 
+                        0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: #ffffff;
+        }
+        
+        .custom-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12), 
+                        0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Enhanced image styling */
+        .card-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+        }
+        
+        .card-img-top {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .custom-card:hover .card-img-top {
+            transform: scale(1.08);
+        }
+        
+        /* Image overlay gradient */
+        .card-img-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .custom-card:hover .card-img-wrapper::after {
+            opacity: 1;
+        }
+        
+        /* Card body styling */
+        .card-body {
+            padding: 2rem;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .card-text {
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Badge for category */
+        .category-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+        
+        /* Primary button styling */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.25);
+        }
+        
+        .btn-primary-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-primary-custom:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary-custom:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.35);
+        }
+        
+        .btn-primary-custom:active {
+            transform: translateY(0);
+        }
+        
+        /* Outline secondary button styling */
+        .btn-outline-secondary-custom {
+            background: transparent;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #6c757d;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-secondary-custom:hover {
+            background: #f8f9fa;
+            border-color: #667eea;
+            color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline-secondary-custom:active {
+            transform: translateY(0);
+        }
+        
+        /* Button container */
+        .button-group {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .button-group .btn {
+            flex: 1;
+        }
+        
+        /* Stats section */
+        .card-stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 1.5rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .card-wrapper {
+                max-width: 100%;
+            }
+            
+            .card-body {
+                padding: 1.5rem;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .card-stats {
+                margin-top: 1rem;
+            }
+        }
+        
+        /* Container for centering */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="card-wrapper">
+            <div class="card custom-card">
+                <!-- Card Image with wrapper -->
+                <div class="card-img-wrapper">
+                    <img src="https://picsum.photos/seed/professional2024/400/220.jpg" 
+                         class="card-img-top" 
+                         alt="Professional workspace">
+                </div>
+                
+                <!-- Card Body -->
+                <div class="card-body">
+                    <!-- Category Badge -->
+                    <span class="category-badge">
+                        <i class="bi bi-lightning-fill me-1"></i>
+                        Featured
+                    </span>
+                    
+                    <!-- Card Title -->
+                    <h5 class="card-title">
+                        Premium Design
+                    </h5>
+                    
+                    <!-- Card Description -->
+                    <p class="card-text">
+                        Experience the perfect harmony of modern aesthetics and functionality. 
+                        Our professional card component delivers exceptional user experience 
+                        with attention to every detail.
+                    </p>
+                    
+                    <!-- Two Buttons -->
+                    <div class="button-group">
+                        <button class="btn btn-primary btn-primary-custom">
+                            <i class="bi bi-check-circle me-2"></i>
+                            Get Started
+                        </button>
+                        <button class="btn btn-outline-secondary btn-outline-secondary-custom">
+                            <i class="bi bi-info-circle me-2"></i>
+                            Learn More
+                        </button>
+                    </div>
+                    
+                    <!-- Stats Section -->
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">4.9</div>
+                            <div class="stat-label">Rating</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">2.3k</div>
+                            <div class="stat-label">Users</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">24/7</div>
+                            <div class="stat-label">Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
